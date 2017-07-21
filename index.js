@@ -1,7 +1,6 @@
 //  String 常用方法
 
  // 去除空格
-
 function trim(str,type){
 	switch (type){
 		case 1:return str.replace(/\s+/g,"");
@@ -18,7 +17,6 @@ console.log(trim('  sdgaddg  sa g',3))
 console.log(trim('  sdgaddg  sa g',4))
 
 //  字母大小写切换
-
 function changeCase(str,type){
 
  function ToggleCase(str){
@@ -60,7 +58,6 @@ function changeCase(str,type){
 
 
 //  字符串循环
-
 function copyStr(str,count){
 	var text = '';
 
@@ -72,7 +69,6 @@ function copyStr(str,count){
 }
 
 //  替换字符串
-
 function replaceStr(str,want,target){
 	wantRegExp = new RegExp(want,'g')
 	return str.replace(wantRegExp,targer)
@@ -80,7 +76,6 @@ function replaceStr(str,want,target){
 
 
 //  检测 电话  邮箱 数字 中文 英文
-
 function checkType(str,type){
 	switch(type){
 		case 'email':
@@ -105,7 +100,6 @@ function checkType(str,type){
 }
 
 // 检测密码强度
-
 //checkPwd('12asdASAD')
 //3(强度等级为3)
 function checkPwd(str) {
@@ -134,16 +128,97 @@ function checkPwd(str) {
 }
 
 //  随机码数 0-36
-
 function randomNumber(num){
 	return Math.random().toString(num).substring(2)
 }
 
 // 查找字符串
-
 function countNum(str,strSplit){
 	return str.split(strSplit).length-1
 }
+
+
+//  数组方法
+
+//  去重
+//  set 是一种数据结构   new Set(array)  可以转变为类数组对象
+//  Array.from(new Set(array)) 方法可以转变为真正的数组
+
+let arr = [1,2,1,2,3,4,1,2,4,24,2,4,24,2,24,9,020,9852,265]
+
+let set = new Set(arr)
+
+let arr1 = Array.from(set)
+
+function removeRepeatArray(array){
+
+	let set = new Set(array)
+
+	return Array.from(set)
+}
+
+
+
+//  打乱数组顺序
+function upsetArr(arr){
+	return arr.sort(function(){
+		return Math.random()-0.5;
+	})
+}
+
+
+//  数组最大、最小值
+function maxArr(arr){
+	return Math.max.apply(null,arr)
+}
+
+function minArr(arr){
+	return Math.min.apply(null,arr)
+}
+
+
+//  数组求和、平均值
+function sumArr(arr){
+	var sumText = 0
+	for(var i=0; i<arr.length; i++){
+		sumText += arr[i]
+	}
+
+	return sumText
+}
+
+function covArr(arr){
+	var sumText = 0
+	for(var i=0; i<arr.length; i++){
+		sumText += arr[i]
+	}
+
+	return sumText/arr.length
+}
+
+// 从数组中获取随机数组
+function randomOne(arr){
+	var index = Math.floor(Math.random()*arr.length)
+	return arr[index]
+}
+
+//  返回数组一个元素出现的次数
+function getEleCount (obj,ele){
+	var num = 0
+	for( var i=0; i<obj.length; i++ ){
+		if(ele == obj[i]){
+			num ++;
+		}
+	}
+	return num
+}
+
+//  返回数组出现次数最多的几次元素和出现次数
+
+
+
+
+
 
 
 
