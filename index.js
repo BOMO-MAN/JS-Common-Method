@@ -213,8 +213,126 @@ function getEleCount (obj,ele){
 	return num
 }
 
-//  返回数组出现次数最多的几次元素和出现次数
 
+//  DOM操作
+//  检查是否有类名
+function hasClass(obj,classStr){
+	var arr = obj.className.split(/^\s+/);
+	return (arr.indexOf(classStr)==-1)?false:true;
+}
+
+// 增加类名
+function addClass(obj,classStr){
+	if(!this.hasClass(obj,classStr)){
+		obj.className += '' + classStr
+	}
+}
+
+//  设置样式 
+
+function css(obj,json){
+	for(var attr in json){
+		obj.style[attr] = json[attr];
+	}
+}
+
+// 设置文本内容
+function html(obj){
+	if(arguments.length == 0){
+		return this.innerHTML;
+	}else if(arguments.length == 1){
+		this.innerHTML = arguments[0]
+	}
+}
+
+// 显示隐藏
+
+function show(obj){
+	obj.style.display = ""
+}
+function hide(obj){
+	obj.style.display = "none"
+}
+
+
+//  现金额转换大写
+
+function upDigit(n){
+
+}
+
+//  随机返回一个范围的数字  Math.ceil(25.5) Math.floor(25.5)  Math.round(25.4) Math.round(25.5)
+
+function randomNumber(n1,n2){
+	// 两个参数
+	if(arguments.length == 2){
+		return Math.round(n1+Math.random()*(n2-n1))
+	}
+	// 单个参数 
+	else if(arguments.length ==1){
+		return Math.round(Math.random()*n1)
+	}
+	// 没有参数 透明度
+	else if(arguments.length == 0){
+		return Math.round(Math.random()*255)
+	}
+	
+}
+
+//  随机颜色
+function randomColor(){
+	var num = Math.round(Math.random()*255)
+	return 'rgb('+ num + ','+ num + ',' +num+ ')'
+}
+
+//  倒计时
+
+function getTime(time){
+
+	var startDate = new Date()   //当前时间
+	var endDate = new Date(time) // 传入时间
+	var t = endDate.getTime() - startDate.getTime() //时间差毫秒数 1s = 1000ms
+
+	var d = 0
+			h = 0
+			m = 0
+			s = 0
+
+	if(t>0){
+		d = Math.floor(t/1000/60/60/24)
+		h = Math.floor(t/1000/60/60%24)
+		m = Math.floor(t/1000/60%60)
+		s = Math.floor(t/1000%60)
+	}		
+
+	return "还剩" + d + "天" + h + "小时" + m + "分钟" + s + "秒"
+}
+
+//  适配rem 
+function getFontSize(){
+	var doc = document
+			win = window
+	resizeEvent = 'orientationchange' in window ?	'orientationchange' : 'resize';
+	recalc = function(){
+		var clientWidth = docEL.clientWidth;
+		if(!clientWidth) {
+			return
+		}
+		if(clientWidth > 750){
+			clientWidth = 750
+		}
+		docEL.style.fontSize = 100*(clientWidth/750) + "px"
+	}
+
+	win.addEventListener(resizeEvent,recalc,false)
+	doc.addEventListener('DOMContentLoaded',recalc,false)
+}
+
+/*
+img {
+	width: 1rem;
+	height: 1rem;
+}
 
 
 
